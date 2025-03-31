@@ -1,0 +1,11 @@
+rootProject.name = 'server'
+include 'clubnu-external-api'
+include 'clubnu-domain'
+include 'clubnu-common'
+include 'clubnu-batch'
+include 'clubnu-infra'
+include 'clubnu-domain:domain-rds'
+findProject(':clubnu-domain:domain-rds')?.name = 'domain-rds'
+include 'clubnu-domain:domain-service'
+findProject(':clubnu-domain:domain-service')?.name = 'domain-service'
+
