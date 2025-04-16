@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     implementation project(':clubnu-common')
+    implementation project(':clubnu-infra')
     implementation project(':clubnu-domain:domain-service')
     // Spring Boot Web
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -26,6 +27,9 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-aop"
     // Swagger
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+    // Test
+    testImplementation(testFixtures(project(":clubnu-domain:domain-service")))
+    testImplementation(testFixtures(project(":clubnu-domain:domain-rds")))
 }
 
 test {
