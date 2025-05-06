@@ -8,6 +8,7 @@
 - {NAVER_CLIENT_ID} : 네이버 로그인 API를 사용하기 위한 클라이언트 ID
 - {NAVER_CLIENT_SECRET} : 네이버 로그인 API를 사용하기 위한 클라이언트 Secret
 - {JWT_SECRET} : JWT 토큰을 암호화하기 위한 Secret Key
+- {REDIRECT_URI} : OAuth2.0 인증 완료 후 Redirect URI
 
 ## Build
 - scripts/env-start.sh
