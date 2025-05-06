@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
     api project(':clubnu-domain:domain-rds')
+    api project(':clubnu-domain:domain-redis')
 }
 
 test {

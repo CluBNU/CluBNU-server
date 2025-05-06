@@ -1,21 +1,19 @@
 package com.clubnu.domain.oauth.dto;
 
-import com.clubnu.domain.oauth.entity.Provider;
+import com.clubnu.domain.oauth.entity.OAuthProvider;
 import lombok.Builder;
-import lombok.Getter;
 
 @Builder
-@Getter
 public record OAuthMemberResponse(
         String email,
         String name,
-        Provider provider
+        OAuthProvider provider
 ) {
-    public static OAuthMemberResponse of (String email, String name, Provider provider){
+    public static OAuthMemberResponse of (String email, String name, OAuthProvider OAuthProvider){
         return OAuthMemberResponse.builder()
                 .email(email)
                 .name(name)
-                .provider(provider)
+                .provider(OAuthProvider)
                 .build();
     }
 }

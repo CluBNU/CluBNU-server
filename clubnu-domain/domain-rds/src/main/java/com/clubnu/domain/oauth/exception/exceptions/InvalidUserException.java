@@ -3,7 +3,7 @@ package com.clubnu.domain.oauth.exception.exceptions;
 import com.clubnu.domain.oauth.exception.OAuthErrCode;
 
 public class InvalidUserException extends RuntimeException {
-    private OAuthErrCode oAuthErrCode;
+    private final OAuthErrCode oAuthErrCode;
 
     public InvalidUserException(OAuthErrCode oAuthErrCode) {
         super(oAuthErrCode.getMessage());

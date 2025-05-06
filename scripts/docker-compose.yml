@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  clubnu-mysql:
+    image: mysql:latest
+    container_name: clubnu-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: clubnu
+      MYSQL_USER: clubnu
+      MYSQL_PASSWORD: clubnu
+      TZ: Asia/Seoul
+    command: [
+      "--character-set-server=utf8mb4",
+      "--secure-file-priv=/docker-entrypoint-initdb.d/dummy"
+    ]
+    volumes:
+      - ./mysql-init.d:/docker-entrypoint-initdb.d
+      - ./mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - clubnu-network
+
+  clubnu-adminer:
+    image: adminer:latest
+    container_name: clubnu-adminer
+    environment:
+      ADMINER_DEFAULT_SERVER: clubnu-mysql
+    ports:
+      - "18080:8080"
+    networks:
+      - clubnu-network
+
+  clubnu-redis:
+    image: redis:latest
+    container_name: clubnu-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - clubnu-network
+
+networks:
+  clubnu-network:
+    driver: bridge
