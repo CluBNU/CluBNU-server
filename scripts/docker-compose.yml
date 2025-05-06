@@ -12,11 +12,7 @@ services:
       TZ: Asia/Seoul
     command: [
       "--character-set-server=utf8mb4",
-      "--secure-file-priv=/docker-entrypoint-initdb.d/dummy"
     ]
-    volumes:
-      - ./mysql-init.d:/docker-entrypoint-initdb.d
-      - ./mysql-data:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
