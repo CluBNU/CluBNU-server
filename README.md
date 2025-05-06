@@ -16,6 +16,8 @@
   - 인프라 스트럭쳐 종료
 - scripts/run.sh
   - 서버 실행
+- scripts/stop.sh
+  - 서버 종료
 ### Process
 1. scripts/env-start.sh
 2. scripts/run.sh
