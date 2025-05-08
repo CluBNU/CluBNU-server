@@ -61,15 +61,19 @@ public class Oauth2AuthenticationSuccessHandler implements AuthenticationSuccess
                 user.get().getUserAttributes().getRegistStatus()
         );
 
+        response.addCookie(createAccessTokenCookie(token.accessToken()));
         response.addCookie(createRefreshTokenCookie(token.refreshToken()));
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(
-                new ObjectMapper().writeValueAsString(Map.of(
-                        "accessToken", token.accessToken()
-                ))
-        );
+
         response.sendRedirect(REDIRECT_URL);
+    }
+
+    private Cookie createAccessTokenCookie(String accessToken) {
+        Cookie cookie = new Cookie("accessToken", accessToken);
+        cookie.setHttpOnly(false);
+        cookie.setPath("/");
+//        cookie.setSecure(true);
+        cookie.setMaxAge(60 * 15); // 15분
+        return cookie;
     }
 
     private Cookie createRefreshTokenCookie(String refreshToken) {
