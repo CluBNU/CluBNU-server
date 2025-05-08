@@ -32,6 +32,8 @@ public class Oauth2AuthenticationSuccessHandler implements AuthenticationSuccess
 
     private final JwtProvider jwtProvider;
     private final OAuthDomainService oAuthDomainService;
+    @Value("${url.redirect.base}")
+    private String REDIRECT_URL;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -67,6 +69,7 @@ public class Oauth2AuthenticationSuccessHandler implements AuthenticationSuccess
                         "accessToken", token.accessToken()
                 ))
         );
+        response.sendRedirect(REDIRECT_URL);
     }
 
     private Cookie createRefreshTokenCookie(String refreshToken) {
