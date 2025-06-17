@@ -31,6 +31,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(
+                                "/**", // 임시 전체 허용
                                 "/api/v1/oauth/**",
                                 "/auth/**",            // 로그인, 토큰 리프레시
                                 "/oauth2/**",          // OAuth 콜백

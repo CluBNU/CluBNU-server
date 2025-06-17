@@ -1,4 +1,8 @@
 spring:
+  graphql:
+    path: /api/query
+  schema:
+    locations: classpath:graphql/
   config:
     activate:
       on-profile: local
@@ -31,6 +35,11 @@ spring:
             jwk-set-uri: https://kauth.kakao.com/.well-known/jwks.json
           naver:
             issuer-uri: https://nid.naver.com
+
+graphql:
+  playground:
+    enabled: true
+    endpoint: /api/query
 
 url:
   redirect:

@@ -1,0 +1,11 @@
+scalar Long
+
+input ClubCreateRequest {
+    name: String!
+    description: String!
+    category: Long!
+    logoImageUrl: String
+    goal: String!
+    location: String!
+    memberCount: Int!
+}
