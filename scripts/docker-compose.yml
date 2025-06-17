@@ -1,6 +1,23 @@
 version: '3.8'
 
 services:
+  clubnu-app:
+    image: sso9594/clubnu-api:latest
+    container_name: clubnu-app
+    ports:
+      - "8082:8082"
+    depends_on:
+      - clubnu-mysql
+    environment:
+      - REDIS_HOST=clubnu-redis
+      - REDIS_PORT=6379
+      - DB_HOST=clubnu-mysql
+      - DB_PORT=3306
+      - DB_SOURCE=clubnu
+      - DB_USER=clubnu
+      - DB_PASSWORD=clubnu
+    networks:
+      - clubnu-network
   clubnu-mysql:
     image: mysql:latest
     container_name: clubnu-mysql
