@@ -1,4 +1,8 @@
 spring:
+  graphql:
+    path: /api/query
+  schema:
+    locations: classpath:graphql/
   config:
     activate:
       on-profile: local
@@ -32,16 +36,21 @@ spring:
           naver:
             issuer-uri: https://nid.naver.com
 
+graphql:
+  playground:
+    enabled: true
+    endpoint: /api/query
+
 url:
   redirect:
-    base: ${REDIRECT_URL} # ex) http://localhost:8082
+    base: secret # ex) http://localhost:8082
 
 jwt:
   access:
     time: 900000  # 15분
   refresh:
     time: 1209600000  # 14일
-  secret: ${JWT_SECRET}
+  secret: secret-key
 
 server:
   port: 8082

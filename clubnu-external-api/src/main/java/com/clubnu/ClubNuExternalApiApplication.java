@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ClubNuExternalApiApplication {
     public static void main(String[] args) {
-        System.setProperty("spring.config.location", "classpath:/domain-property/application-rds-local.yml,classpath:/domain-property/application-redis-local.yml,classpath:/");
+//        System.setProperty("spring.config.location", "classpath:/domain-property/application-rds-local.yml,classpath:/domain-property/application-redis-local.yml,classpath:/");
+        System.setProperty("spring.config.location", "classpath:/domain-property/application-rds-prod.yml,classpath:/domain-property/application-redis-prod.yml,classpath:/");
         SpringApplication.run(ClubNuExternalApiApplication.class, args);
     }
 }

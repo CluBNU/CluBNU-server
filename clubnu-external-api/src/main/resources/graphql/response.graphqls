@@ -1,0 +1,17 @@
+scalar LocalDateTime
+
+type ClubResponse {
+    clubId: ID!
+    name: String!
+    description: String
+    category: String
+    logoImageUrl: String
+    goal: String
+    location: String
+    memberCount: Int
+    createdAt: LocalDateTime!
+}
+
+type ClubIntroduction {
+    clubId: ID!
+}

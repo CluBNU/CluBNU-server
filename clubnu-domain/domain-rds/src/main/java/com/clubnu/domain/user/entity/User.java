@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -23,6 +26,10 @@ public class User extends BaseEntity {
 
     @Embedded
     private UserAttributes userAttributes;
+
+    @LastModifiedDate
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
     public static User of(String email, String name, String studentId, String major){
         return User.builder()

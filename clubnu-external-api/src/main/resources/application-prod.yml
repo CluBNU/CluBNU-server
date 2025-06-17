@@ -1,7 +1,57 @@
 spring:
+  graphql:
+    path: /api/query
+  schema:
+    locations: classpath:graphql/
   config:
     activate:
       on-profile: prod
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: ${KAKAO_CLIENT_ID}
+            client-authentication-method: client_secret_post
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid
+            client-name: Kakao
+          naver:
+            client-id: ${NAVER_CLIENT_ID}
+            client-secret: ${NAVER_CLIENT_SECRET}
+            client-authentication-method: client_secret_post
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid
+            client-name: Naver
+
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v1/oidc/userinfo
+            user-name-attribute: sub
+            jwk-set-uri: https://kauth.kakao.com/.well-known/jwks.json
+          naver:
+            issuer-uri: https://nid.naver.com
+
+graphql:
+  playground:
+    enabled: true
+    endpoint: /api/query
+
+url:
+  redirect:
+    base: secret # ex) http://localhost:8082
+
+jwt:
+  access:
+    time: 900000  # 15분
+  refresh:
+    time: 1209600000  # 14일
+  secret: secret-key
+
 server:
   port: 8082
 logging:
