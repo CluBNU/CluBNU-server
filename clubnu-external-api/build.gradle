@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     implementation project(':clubnu-common')
+    implementation project(':clubnu-infra')
     implementation project(':clubnu-domain:domain-service')
     // Spring Boot Web
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -18,6 +19,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     // Spring Security
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    // httpclient
+    implementation("org.apache.httpcomponents.client5:httpclient5:5.4.4")
     // JWT
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
@@ -26,6 +29,10 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-aop"
     // Swagger
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+    // Test
+    testImplementation(testFixtures(project(":clubnu-domain:domain-service")))
+    testImplementation(testFixtures(project(":clubnu-domain:domain-rds")))
+
 }
 
 test {

@@ -8,4 +8,6 @@ include 'clubnu-domain:domain-rds'
 findProject(':clubnu-domain:domain-rds')?.name = 'domain-rds'
 include 'clubnu-domain:domain-service'
 findProject(':clubnu-domain:domain-service')?.name = 'domain-service'
+include 'clubnu-domain:domain-redis'
+findProject(':clubnu-domain:domain-redis')?.name = 'domain-redis'
 
